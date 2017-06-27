@@ -9,7 +9,7 @@ export default(
   <Route path='/' component={App}>
     <IndexRoute component={HomePage} />
     <Route path='/cats' component={CatsPage} >
-      <Route path='/cats/:id' component={CatPage}/>
+      <Route name='cat' path='/cats/:id' component={CatPage}/>
     </Route>
   </Route>
 )
