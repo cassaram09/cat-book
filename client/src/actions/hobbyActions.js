@@ -14,5 +14,5 @@ export function loadHobbies(){
 };
 
 export function loadHobbiesSuccess(hobbies) {  
-  return {type: types.LOAD_HOBBIES_SUCCESS, hobbies;
+  return {type: types.LOAD_HOBBIES_SUCCESS, hobbies};
 }
