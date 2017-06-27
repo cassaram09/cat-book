@@ -14,7 +14,7 @@ class CatsPage extends Component {
           <CatList cats={this.props.cats} />
         </div>
         <div className="col-md-8">
-          <CatPage />
+          {this.props.children}
         </div>
       </div>
     )

@@ -1,10 +1,10 @@
 import * as types from '../actions/actionTypes'
 import initialState from './initialState'
 
-export default function catsReducer(state = initialState.cats, action) {
+export default function hobbiesReducer(state = initialState.hobbies, action) {
   switch(action.type){
-    case types.LOAD_CATS_SUCCESS:
-      return action.cats;
+    case types.LOAD_HOBBIES_SUCCESS:
+      return action.hobbies;
     default:
       return state;
   }

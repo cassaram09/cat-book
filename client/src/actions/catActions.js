@@ -14,5 +14,5 @@ export function loadCats(){
 };
 
 export function loadCatsSuccess(cats) {  
-  return {type: 'LOAD_CATS_SUCCESS', cats};
+  return {type: types.LOAD_CATS_SUCCESS, cats};
 }
