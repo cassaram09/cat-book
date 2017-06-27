@@ -1,14 +1,34 @@
-import React from 'react';
+import React, {Component, PropTypes}  from 'react'
+import {connect} from 'react-redux';  
+import * as catActions from '../../actions/catActions';
+import CatList from './catList';
+import CatPage from './catPage';
 
-class CatsPage extends React.Component {
 
+class CatsPage extends Component {
   render(){
     return(
-      <div>
-        I'm a Cats page!
+      <div className="col-md-12">
+        <h1>Cats</h1>
+        <div className="col-md-4">
+          <CatList cats={this.props.cats} />
+        </div>
+        <div className="col-md-8">
+          <CatPage />
+        </div>
       </div>
     )
   }
+};
+
+CatsPage.propTypes = {
+  cats: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps){
+  return{
+    cats: state.cats
+  }
 }
 
-export default CatsPage;
+export default connect(mapStateToProps)(CatsPage);
