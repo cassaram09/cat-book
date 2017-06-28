@@ -5,6 +5,13 @@ class CatsController < ApplicationController
     render json: @cats
   end
 
+  def create
+    @cat = Cat.new(cat_params)
+    if @cat.save()
+      render json: @cat
+    end
+  end
+
   def show
     @cat = Cat.find(params[:id])
     render json: @cat
@@ -12,8 +19,9 @@ class CatsController < ApplicationController
 
   def update
     @cat = Cat.find(cat_params[:id])
-    @cat.update(cat_params)
-    render json: @cat
+    if @cat.update(cat_params)
+      render json: @cat
+    end
   end
 
   private

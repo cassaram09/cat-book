@@ -101,7 +101,6 @@ CatPage.propTypes = {
 // returns all hobbies with add attribute of checked
 // checked is true if hobby belongs to cat; else false
 function hobbiesForCheckBoxes(hobbies, cat=null) {  
-  debugger
   return hobbies.map(hobby => {
     if (cat && cat.hobby_ids.filter(hobbyId => hobbyId == hobby.id).length > 0) {
       hobby['checked'] = true;
@@ -130,17 +129,20 @@ function mapStateToProps(state, ownProps) {
   let cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
   let catHobbies = []
   const catId = ownProps.params.id;
-  
   if (catId && state.cats.length > 0 && state.hobbies.length > 0) {
     cat = state.cats.filter(cat => cat.id == catId)[0]
-    if (cat.hobby_ids.length > 0) {
+    if (cat && cat.id && cat.hobby_ids.length > 0) {
       checkBoxHobbies = hobbiesForCheckBoxes(stateHobbies, cat);
       catHobbies = collectCatHobbies(stateHobbies, cat);
     } else {
       checkBoxHobbies = hobbiesForCheckBoxes(stateHobbies)
     }
   } 
-    return {cat: cat, checkBoxHobbies: checkBoxHobbies, catHobbies: catHobbies};
+  if (!cat){
+    cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
+  }
+  
+  return {cat: cat, checkBoxHobbies: checkBoxHobbies, catHobbies: catHobbies};
 };
 
 function mapDispatchToProps(dispatch) {  

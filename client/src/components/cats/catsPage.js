@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as catActions from '../../actions/catActions';
 import CatList from './catList';
 import CatPage from './catPage';
+import { Link } from 'react-router'
 
 // container component that stores a list of the cats.
 // this component renders both the cat list as well as
@@ -13,7 +14,12 @@ class CatsPage extends Component {
   render(){
     return(
       <div className="col-md-12">
-        <h1>Cats</h1>
+        <h1>
+          Cats
+          <Link to={'/cats/new'} className='btn btn-primary'>
+            +cat
+          </Link>
+        </h1>
         <div className="col-md-4">
           <CatList cats={this.props.cats} />
         </div>

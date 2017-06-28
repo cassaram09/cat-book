@@ -4,12 +4,15 @@ import App from './components/App'
 import HomePage from './components/home/homePage';  
 import CatsPage from './components/cats/catsPage';  
 import CatPage from './components/cats/catPage';
+import NewCatPage from './components/cats/newCatPage';
+
 
 export default(
   // configure our routes - set App as our top level component with Home as the index route
   <Route path='/' component={App}>
     <IndexRoute component={HomePage} />
     <Route path='/cats' component={CatsPage} >
+      <Route name='newCat' path='/cats/new' component={NewCatPage}/>
       <Route name='cat' path='/cats/:id' component={CatPage}/>
     </Route>
   </Route>

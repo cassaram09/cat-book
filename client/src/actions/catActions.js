@@ -32,3 +32,17 @@ export function updateCat(cat) {
 export function updateCatSuccess(cat) {  
   return {type: types.UPDATE_CAT_SUCCESS, cat};
 }
+
+export function createCat(cat) {  
+  return function (dispatch) {
+    return catApi.createCat(cat).then(response => {
+      dispatch(createCatSuccess(response));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function createCatSuccess(cat) {  
+  return {type: types.CREATE_CAT_SUCCESS, cat};
+}
