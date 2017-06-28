@@ -1,24 +1,5 @@
-# README
+# Cat Book
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A test of React CRUD functionality and querying a Rails 5 API server.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Tutorial here: http://www.thegreatcodeadventure.com/building-a-simple-crud-app-with-react-redux-part-1/#table-of-contents
