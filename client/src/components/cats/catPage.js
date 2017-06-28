@@ -65,13 +65,14 @@ class CatPage extends Component {
     if( this.state.isEditing ){
       return (
         <div className="col-md-8 col-md-offset-2">
-          <h1>Edit {this.props.cat.name} <button onClick={this.toggleEdit}>edit</button></h1>
+          <h1>Edit {this.props.cat.name}</h1>
           <CatForm 
           cat={this.state.cat} 
           hobbies={this.state.checkBoxHobbies}
           onSave={this.saveCat} 
           onChange={this.updateCatState} 
           onHobbyChange={this.updateCatHobbies}/>
+          <button onClick={this.toggleEdit}>Cancel</button>
         </div>
       )
     }
@@ -122,26 +123,26 @@ function collectCatHobbies(hobbies, cat) {
   return selected.filter(el => el != undefined)
 }
 
-
 function mapStateToProps(state, ownProps) { 
-  const stateHobbies = Object.assign([], state.hobbies)
-  let checkBoxHobbies = [];
-  let cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
-  let catHobbies = []
+  var cats = Object.assign([], state.cats)
+  var hobbies =Object.assign([], state.hobbies)
   const catId = ownProps.params.id;
-  if (catId && state.cats.length > 0 && state.hobbies.length > 0) {
-    cat = state.cats.filter(cat => cat.id == catId)[0]
-    if (cat && cat.id && cat.hobby_ids.length > 0) {
-      checkBoxHobbies = hobbiesForCheckBoxes(stateHobbies, cat);
-      catHobbies = collectCatHobbies(stateHobbies, cat);
+
+  let checkBoxHobbies = [];
+  let catHobbies = []
+  let cat;
+
+  if (catId && cats.length > 0 && hobbies.length > 0) {
+    cat = cats.filter(cat => cat.id == catId)[0]
+    if (cat) {  
+      catHobbies = collectCatHobbies(hobbies, cat);
     } else {
-      checkBoxHobbies = hobbiesForCheckBoxes(stateHobbies)
+      cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
     }
+
+    checkBoxHobbies = hobbiesForCheckBoxes(hobbies)
   } 
-  if (!cat){
-    cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
-  }
-  
+
   return {cat: cat, checkBoxHobbies: checkBoxHobbies, catHobbies: catHobbies};
 };
 
