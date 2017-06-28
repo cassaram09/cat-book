@@ -22,7 +22,6 @@ CatPage.propTypes = {
 };
 
 function collectCatHobbies(hobbies, cat) {  
-  debugger
   let selected = hobbies.map(hobby => {
     if (cat.hobby_ids.filter(hobbyId => hobbyId == hobby.id).length > 0) {
       return hobby;
@@ -32,11 +31,10 @@ function collectCatHobbies(hobbies, cat) {
 }
 
 function mapStateToProps(state, ownProps) { 
-debugger 
   let cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
   let catHobbies = []
   const catId = ownProps.params.id;
-  if (state.cats.length > 0 && state.hobbies > 0) {
+  if (state.cats.length > 0 && state.hobbies.length > 0) {
     cat = Object.assign({}, state.cats.find(cat => cat.id == catId))
     if (cat.hobby_ids.length > 0) {
       catHobbies = collectCatHobbies(state.hobbies, cat)
