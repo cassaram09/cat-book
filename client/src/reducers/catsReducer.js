@@ -18,6 +18,7 @@ export default function catsReducer(state = initialState.cats, action) {
         ...state.filter(cat => cat.id !== action.cat.id), Object.assign({}, action.cat)
       ]
     case types.DELETE_CAT_SUCCESS: {
+      
       const newState = Object.assign([], state);
       const indexOfCatToDelete = state.findIndex(cat => {
         return cat.id == action.cat.id
