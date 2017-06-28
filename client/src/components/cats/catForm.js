@@ -1,3 +1,5 @@
+//Form for creating and editing cats. 
+
 import React, {PropTypes} from 'react';  
 import TextInput from '../common/textInput';
 import CheckBox from '../common/checkBox';
@@ -5,6 +7,8 @@ import CheckBox from '../common/checkBox';
 class CatForm extends React.Component {  
    constructor(props) {
     super(props);
+
+    // function for generating checkboxes
     this.makeCheckBoxes = () => {
       return this.props.hobbies.map(hobby => {
         return (
@@ -60,6 +64,7 @@ class CatForm extends React.Component {
   }
 }
 
+// validate properties
 CatForm.propTypes = {  
   cat: React.PropTypes.object.isRequired,
   hobbies: React.PropTypes.array.isRequired,

@@ -1,3 +1,5 @@
+//helper module for making calls to Cat API on server
+
 class CatApi {  
   static getAllCats() {
     return fetch('/api/v1/cats').then(response => {

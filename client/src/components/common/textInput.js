@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+// component that wraps text input with additional functionality
+
 const TextInput = ({name, onChange, placeholder, value}) => {  
   return (
     <div className="form-group">

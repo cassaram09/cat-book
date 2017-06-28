@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 
+// component that wraps checkboxes with additional functionality
 class CheckBox extends React.Component {  
   render() {
     return (

@@ -9,13 +9,16 @@ import { loadCats } from './actions/catActions'
 import { loadHobbies } from './actions/hobbyActions';
 
 
+// create our store on load
 const store = configureStore();
 
+// load cats and  hobbies on app load
 store.dispatch(loadCats());
 store.dispatch(loadHobbies());
 
 
 ReactDOM.render(
+  // wrap our Application in a provider so it's connected to the redux store
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
   </Provider>,

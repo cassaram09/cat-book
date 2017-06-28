@@ -1,3 +1,5 @@
+// component for rendering list of cats for user
+
 import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
 
@@ -15,6 +17,8 @@ const catList = ({cats}) => {
   )
 };
 
+
+// validate properties
 catList.propTypes = {
   cats: PropTypes.array.isRequired
 }

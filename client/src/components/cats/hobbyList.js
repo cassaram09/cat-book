@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+// presentational component that renders a list of hobbies
+
 const HobbyList = ({hobbies}) => {  
   return (
     <div>

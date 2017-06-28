@@ -1,14 +1,13 @@
 import React from 'react';
 
-class HomePage extends React.Component {
+// presentational component for the home page
 
-  render(){
-    return(
-      <div>
-        I'm a home page!
-      </div>
-    )
-  }
+const homePage = () => {
+  return(
+    <div>
+      I'm a home page!
+    </div>
+  )
 }
 
-export default HomePage;
+export default homePage;

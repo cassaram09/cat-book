@@ -4,6 +4,10 @@ import * as catActions from '../../actions/catActions';
 import CatList from './catList';
 import CatPage from './catPage';
 
+// container component that stores a list of the cats.
+// this component renders both the cat list as well as
+// the show page for the selected cat. 
+// this component gets cats from the redux store
 
 class CatsPage extends Component {
   render(){

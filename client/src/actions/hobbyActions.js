@@ -1,3 +1,6 @@
+// actions to be dispatched by store to hobbies reducer
+
+
 import * as types from './actionTypes';  
 import hobbyApi from '../api/hobbyApi';
 

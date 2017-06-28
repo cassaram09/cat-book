@@ -1,3 +1,5 @@
+// actions to be dispatched by store to cats reducer
+
 import * as types from './actionTypes';  
 import catApi from '../api/catApi';
 

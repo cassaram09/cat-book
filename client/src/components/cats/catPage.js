@@ -1,3 +1,5 @@
+// container component that stores the cat show details and create/edit form
+
 import React, {Component, PropTypes}  from 'react'
 import {connect} from 'react-redux';  
 import HobbyList from './hobbyList'; 
@@ -59,6 +61,7 @@ class CatPage extends Component {
   }
 
   render(){
+    // return the cat edit form or cat show page
     if( this.state.isEditing ){
       return (
         <div className="col-md-8 col-md-offset-2">
@@ -95,7 +98,10 @@ CatPage.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
+// returns all hobbies with add attribute of checked
+// checked is true if hobby belongs to cat; else false
 function hobbiesForCheckBoxes(hobbies, cat=null) {  
+  debugger
   return hobbies.map(hobby => {
     if (cat && cat.hobby_ids.filter(hobbyId => hobbyId == hobby.id).length > 0) {
       hobby['checked'] = true;
@@ -106,6 +112,8 @@ function hobbiesForCheckBoxes(hobbies, cat=null) {
   });
 }
 
+// collect all of the cat's hobbies 
+// use the cats hobby_ids array to map and ilter from hobbies array
 function collectCatHobbies(hobbies, cat) {  
   let selected = hobbies.map(hobby => {
     if (cat.hobby_ids.filter(hobbyId => hobbyId == hobby.id).length > 0) {
@@ -115,12 +123,14 @@ function collectCatHobbies(hobbies, cat) {
   return selected.filter(el => el != undefined)
 }
 
+
 function mapStateToProps(state, ownProps) { 
   const stateHobbies = Object.assign([], state.hobbies)
   let checkBoxHobbies = [];
   let cat = {name: '', breed: '', weight: '', temperament: '', hobby_ids: []};
   let catHobbies = []
   const catId = ownProps.params.id;
+  
   if (catId && state.cats.length > 0 && state.hobbies.length > 0) {
     cat = state.cats.filter(cat => cat.id == catId)[0]
     if (cat.hobby_ids.length > 0) {
