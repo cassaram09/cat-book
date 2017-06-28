@@ -16,3 +16,17 @@ export function loadCats(){
 export function loadCatsSuccess(cats) {  
   return {type: types.LOAD_CATS_SUCCESS, cats};
 }
+
+export function updateCat(cat) {  
+  return function (dispatch) {
+    return catApi.updateCat(cat).then(response => {
+      dispatch(updateCatSuccess(response));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function updateCatSuccess(cat) {  
+  return {type: types.UPDATE_CAT_SUCCESS, cat};
+}
