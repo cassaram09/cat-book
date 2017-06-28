@@ -1,8 +1,19 @@
 //helper module for making calls to Cat API on server
 
 class CatApi {  
+
+  static requestHeaders() {
+    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+  }
+
   static getAllCats() {
-    return fetch('/api/v1/cats').then(response => {
+    const headers = this.requestHeaders();
+    const request = new Request('http://localhost:5000/api/v1/cats', {
+      method: 'GET',
+      headers: headers
+    });
+
+    return fetch(request).then(response => {
       return response.json();
     }).catch(error => {
       return error;
@@ -10,11 +21,10 @@ class CatApi {
   }
 
   static updateCat(cat) {
+    const headers = this.requestHeaders();
     const request = new Request(`/api/v1/cats/${cat.id}`, {
       method: 'PATCH',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }), 
+      headers: headers,
       body: JSON.stringify({cat: cat})
     });
     return fetch(request).then(response => {
@@ -26,11 +36,10 @@ class CatApi {
   }
 
   static createCat(cat){
+    const headers = this.requestHeaders();
     const request = new Request(`/api/v1/cats`, {
       method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
+      headers: headers,
        body: JSON.stringify({cat: cat})
     })
 
@@ -42,11 +51,10 @@ class CatApi {
   }
 
   static deleteCat(cat){
+    const headers = this.requestHeaders();
     const request = new Request(`/api/v1/cats/${cat.id}`, {
       method: 'DELETE',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
+      headers: headers
     })
 
     return fetch(request).then(response => {

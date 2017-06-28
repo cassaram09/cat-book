@@ -3,5 +3,6 @@
 
 export default {  
   cats: [],
-  hobbies: []
+  hobbies: [],
+  session: !!sessionStorage.jwt
 }
