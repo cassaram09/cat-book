@@ -49,6 +49,10 @@ class CatPage extends Component {
       event.preventDefault();
       this.props.actions.updateCat(this.state.cat);
     }
+
+    this.deleteCat = (event) => {
+      this.props.actions.deleteCat(this.state.cat)
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -85,6 +89,7 @@ class CatPage extends Component {
         <HobbyList hobbies={this.state.catHobbies} />
         <button onClick={this.toggleEdit} 
           className="btn btn-default">edit</button>
+        <button onClick={this.deleteCat} className='btn btn-danger'>Euthanize</button>
       </div>
     )
   }

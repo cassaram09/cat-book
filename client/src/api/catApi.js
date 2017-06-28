@@ -40,6 +40,21 @@ class CatApi {
       return error;
     })
   }
+
+  static deleteCat(cat){
+    const request = new Request(`/api/v1/cats/${cat.id}`, {
+      method: 'DELETE',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      return error;
+    })
+  }
 }
 
 export default CatApi;  

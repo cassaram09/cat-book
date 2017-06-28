@@ -17,6 +17,15 @@ export default function catsReducer(state = initialState.cats, action) {
       return [
         ...state.filter(cat => cat.id !== action.cat.id), Object.assign({}, action.cat)
       ]
+    case types.DELETE_CAT_SUCCESS: {
+      const newState = Object.assign([], state);
+      const indexOfCatToDelete = state.findIndex(cat => {
+        return cat.id == action.cat.id
+      })
+      newState.splice(indexOfCatToDelete, 1);
+      browserHistory.push('/cats');
+      return newState;
+    }
     default:
       return state;
   }
