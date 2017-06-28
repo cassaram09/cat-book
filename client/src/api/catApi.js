@@ -15,6 +15,12 @@ class CatApi {
       }), 
       body: JSON.stringify({cat: cat})
     });
+    return fetch(request).then(response => {
+      console.log('RESPONSE:', response)
+      return response.json();
+    }).catch(error => {
+      return error;
+    });
   }
 }
 
