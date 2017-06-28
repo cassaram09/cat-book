@@ -10,6 +10,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def new
+    
+  end
+
+  def destroy
+
+  end
+
   private
   def auth_params
     params.require(:auth).permit(:email, :password)
