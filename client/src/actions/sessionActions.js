@@ -8,6 +8,7 @@ export function loginSuccess(){
 export function logInUser(credentials){
   return function(dispatch) {
     return sessionApi.login(credentials).then(response =>{
+      console.log('JWT', response)
       sessionStorage.setItem('jwt', response.jwt)
       dispatch(loginSuccess())
     }).catch(error => {

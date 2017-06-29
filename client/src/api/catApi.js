@@ -8,7 +8,7 @@ class CatApi {
 
   static getAllCats() {
     const headers = this.requestHeaders();
-    const request = new Request('http://localhost:5000/api/v1/cats', {
+    const request = new Request('/api/v1/cats', {
       method: 'GET',
       headers: headers
     });

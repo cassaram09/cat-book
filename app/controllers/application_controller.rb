@@ -25,7 +25,7 @@ class ApplicationController < ActionController::API
 
   # get token from from the headers of the request
   def token
-    request.env["HTTP_AUTHORIZATION"].scan(/Bearer(.*$)/).flatten.last
+    request.env["HTTP_AUTHORIZATION"].scan(/Bearer (.*)$/).flatten.last
   end
 
   # JWT decode the token, to return the right user
